@@ -7,11 +7,8 @@ function Dashboard() {
 
   useEffect(() => {
     const stored = localStorage.getItem('user');
-    if (!stored) {
-      navigate('/');
-    } else {
-      setUser(JSON.parse(stored));
-    }
+    if (!stored) navigate('/');
+    else setUser(JSON.parse(stored));
   }, [navigate]);
 
   const handleLogout = () => {
@@ -29,9 +26,9 @@ function Dashboard() {
         <h3>Welcome, {user?.name}! 👋</h3>
         <p>Role: <strong>{user?.role}</strong></p>
         <div style={styles.cards}>
-          <div style={styles.card}>📋 Mark Attendance</div>
-          <div style={styles.card}>📅 Leave Requests</div>
-          <div style={styles.card}>📊 Reports</div>
+          <div style={styles.card} onClick={() => navigate('/attendance')}>📋 Mark Attendance</div>
+          <div style={styles.card} onClick={() => navigate('/leave')}>📅 Leave Requests</div>
+          <div style={styles.card} onClick={() => navigate('/report')}>📊 Reports</div>
         </div>
       </div>
     </div>
