@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API = 'https://student-attendance-portal-phec.onrender.com';
+
 function Report() {
   const [studentId, setStudentId] = useState('');
   const [report, setReport] = useState(null);
@@ -11,7 +13,7 @@ function Report() {
   const handleFetch = async () => {
     if (!studentId) { setMessage('Please enter a student ID!'); return; }
     try {
-      const res = await axios.get(`https://student-attendance-portal-phec.onrender.com/attendance/report/${studentId}`);
+      const res = await axios.get(`${API}/attendance/report/${studentId}`);
       setReport(res.data);
       setMessage('');
     } catch (err) {
@@ -31,10 +33,7 @@ function Report() {
           <input style={styles.input} placeholder="Enter Student ID" value={studentId} onChange={e => setStudentId(e.target.value)} />
           <button style={styles.button} onClick={handleFetch}>Get Report</button>
           {studentId && (
-            
-              href={`https://student-attendance-portal-phec.onrender.com/attendance/export/${studentId}`}
-              style={styles.exportBtn}
-            >
+            <a href={`${API}/attendance/export/${studentId}`} style={styles.exportBtn}>
               📥 Export to CSV
             </a>
           )}
