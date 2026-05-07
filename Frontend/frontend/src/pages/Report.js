@@ -11,7 +11,7 @@ function Report() {
   const handleFetch = async () => {
     if (!studentId) { setMessage('Please enter a student ID!'); return; }
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/attendance/report/${studentId}`);
+      const res = await axios.get(`https://student-attendance-portal-phec.onrender.com/attendance/report/${studentId}`);
       setReport(res.data);
       setMessage('');
     } catch (err) {
@@ -32,7 +32,7 @@ function Report() {
           <button style={styles.button} onClick={handleFetch}>Get Report</button>
           {studentId && (
             
-              href={`http://127.0.0.1:8000/attendance/export/${studentId}`}
+              href={`https://student-attendance-portal-phec.onrender.com/attendance/export/${studentId}`}
               style={styles.exportBtn}
             >
               📥 Export to CSV

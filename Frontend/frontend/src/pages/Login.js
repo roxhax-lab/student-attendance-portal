@@ -10,7 +10,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('http://127.0.0.1:8000/auth/login', {
+      const res = await axios.post('https://student-attendance-portal-phec.onrender.com/auth/login', {
         email,
         password
       });

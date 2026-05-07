@@ -16,7 +16,7 @@ function MarkAttendance() {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:8000/attendance/mark', {
+      await axios.post('https://student-attendance-portal-phec.onrender.com/attendance/mark', {
         student_id: studentId,
         date,
         status,

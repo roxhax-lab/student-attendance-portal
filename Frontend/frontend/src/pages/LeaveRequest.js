@@ -16,7 +16,7 @@ function LeaveRequest() {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:8000/leave/apply', {
+      await axios.post('https://student-attendance-portal-phec.onrender.com/leave/apply', {
         student_id: user.id,
         from_date: fromDate,
         to_date: toDate,
