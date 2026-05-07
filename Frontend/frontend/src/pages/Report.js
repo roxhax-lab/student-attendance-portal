@@ -30,6 +30,14 @@ function Report() {
         <div style={styles.form}>
           <input style={styles.input} placeholder="Enter Student ID" value={studentId} onChange={e => setStudentId(e.target.value)} />
           <button style={styles.button} onClick={handleFetch}>Get Report</button>
+          {studentId && (
+            
+              href={`http://127.0.0.1:8000/attendance/export/${studentId}`}
+              style={styles.exportBtn}
+            >
+              📥 Export to CSV
+            </a>
+          )}
           {message && <p style={{color: 'red'}}>{message}</p>}
         </div>
         {report && (
@@ -59,7 +67,8 @@ const styles = {
   content: { padding: '30px' },
   form: { backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', maxWidth: '400px', marginBottom: '20px' },
   input: { width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ddd', fontSize: '14px', boxSizing: 'border-box' },
-  button: { width: '100%', padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' },
+  button: { width: '100%', padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer', marginBottom: '10px' },
+  exportBtn: { display: 'block', textAlign: 'center', marginTop: '10px', backgroundColor: '#2196F3', color: 'white', textDecoration: 'none', padding: '10px', borderRadius: '5px', fontSize: '16px' },
   reportBox: { backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', maxWidth: '400px' },
   alert: { backgroundColor: '#ff4444', color: 'white', padding: '10px', borderRadius: '5px', textAlign: 'center', fontWeight: 'bold', marginTop: '10px' }
 };
