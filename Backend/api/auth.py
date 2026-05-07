@@ -47,3 +47,12 @@ def login(user: LoginUser):
     except Exception as e:
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/students")
+def get_students():
+    try:
+        response = supabase.table("users").select("*").eq("role", "student").execute()
+        return {"data": response.data}
+    except Exception as e:
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
